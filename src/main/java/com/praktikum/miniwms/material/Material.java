@@ -5,14 +5,19 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name="materials")
 public class Material {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
+
+    @NotBlank(message = "Business ID cannot be empty!")
+    @Column(unique = true)
+    private String businessid;
 
     @NotBlank(message = "Name cannot be empty!")
     @Column(name = "name",length = 50)
@@ -66,13 +71,22 @@ public class Material {
     public Long getId() {
         return id;
     }
+    //for businessid
+    public String getBusinessid() {
+        return businessid;
+    }
+
+    public void setBusinessid(String businessid) {
+        this.businessid = businessid;
+    }
     public Material(){
     }
-    public Material(String name, String description, Integer quantity, String uom){
+    public Material(String name, String description, Integer quantity, String uom,String businessid){
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.uom = uom;
+        this.businessid = businessid;
     }
 
 }

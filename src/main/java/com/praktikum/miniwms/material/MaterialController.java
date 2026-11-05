@@ -3,11 +3,11 @@ package com.praktikum.miniwms.material;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/materials")
 public class MaterialController {
-    private MaterialService materialService;
+    private final MaterialService materialService;
     public MaterialController(MaterialService materialService) {
         this.materialService = materialService;
     }
@@ -21,11 +21,11 @@ public class MaterialController {
         return materialService.getMaterialById(id);
     }
     @PostMapping
-    public Material createMaterial(@RequestBody Material material){
+    public Material createMaterial(@Valid @RequestBody Material material){
         return materialService.createMaterial(material);
     }
     @PutMapping("/{id}")
-    public Material updateMaterial(@PathVariable Long id,@RequestBody Material updatedMaterial){
+    public Material updateMaterial(@PathVariable Long id,@Valid @RequestBody Material updatedMaterial){
         return materialService.updateMaterial(id, updatedMaterial);
     }
     @DeleteMapping("/{id}")
