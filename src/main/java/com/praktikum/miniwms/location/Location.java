@@ -11,7 +11,7 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String buisnessId;
+    private String businessId;
 
     @Column(name = "name", length = 50, nullable = false)
     private String name;
@@ -28,16 +28,19 @@ public class Location {
     @Column(name = "equipment", length = 250, nullable = true)
     private List<String> equipments;
 
+    public Location() {
+    }
+
     public Long getId() {
         return id;
     }
 
-    public String getBuisnessId() {
-        return buisnessId;
+    public String getBusinessId() {
+        return businessId;
     }
 
-    public void setBuisnessId(String buisnessId) {
-        this.buisnessId = buisnessId;
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
     }
 
     public String getName() {

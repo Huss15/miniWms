@@ -44,7 +44,7 @@ public class LocationService {
         existingLocation.setName(updatedLocation.getName());
         existingLocation.setDescription(updatedLocation.getDescription());
         existingLocation.setEquipments(updatedLocation.getEquipments());
-        existingLocation.setBuisnessId(updatedLocation.getBuisnessId());
+        existingLocation.setBusinessId(updatedLocation.getBusinessId());
 
         return locationRepository.save(existingLocation);
     }
